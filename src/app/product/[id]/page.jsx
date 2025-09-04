@@ -84,11 +84,7 @@ export default function Product({ params }, any) {
                   ${price === null ? newPizza.prices[0] : price}
                 </span>
                 <p className="text-center md:text-left text-[24px] md:text-xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nostrum sint mollitia cumque excepturi, facere facilis officia
-                  libero dolores incidunt rerum est voluptate adipisci, repellat
-                  qui! Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Qui, aspernatur rerum. Nemo quaerat reiciendis eos.
+                  {newPizza.description}
                 </p>
                 <div className="text-center md:text-left ">
                   <span className="font-semibold text-[28px] md:text-xl">
