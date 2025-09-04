@@ -32,7 +32,7 @@ export default function page() {
   // console.log(cart);
   async function createOrder(data) {
     try {
-      const res = await axios.post("https://pizza-website-chi-hazel.vercel.app/api/orders", data);
+      const res = await axios.post("https://pizza-website-steel.vercel.app/api/orders", data);
       res.status === 201 && router.push("/orders/" + res.data._id);
     } catch (err) {
       console.log(err);
