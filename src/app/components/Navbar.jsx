@@ -1,11 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  
+  const quantity = useSelector((state) => state.cart.quantity);
   const router = useRouter();
   const onProduct = () => {
     router.push("/product/[id]");
@@ -13,9 +12,12 @@ export default function Navbar() {
   const onHomepage = () => {
     router.push("/");
   };
-  const onCart=()=>{
-    router.push("/cart")
-  }
+  const onCart = () => {
+    router.push("/cart");
+  };
+  const onLogin = () => {
+    router.push("/admin/login");
+  };
   return (
     <div className="h-[100px] py-0 px-[0px] pr-[20px] md:px-[50px] bg-[#e3421a] flex items-center justify-between fixed to-0 left-0 right-0 text-center z-50">
       <div className="dropdown flex-1/4 w-[30%] md:hidden">
@@ -33,7 +35,7 @@ export default function Navbar() {
             <a onClick={onProduct}>Products</a>
           </li>
           <li>
-            <a>Events</a>
+            <a>Admin</a>
           </li>
           <li>
             <a>Blog</a>
@@ -61,14 +63,10 @@ export default function Navbar() {
             Products
           </li>
           <li className="font-[600]">Menu</li>
-          <Image
-            src="/img/logo.png"
-            alt=""
-            width={160}
-            height={69}
-            className="mx-0"
-          />
-          <li className="font-[600]">Events</li>
+          <span className="text-3xl px-4 font-bold">Pizza_App</span>
+          <li className="font-[600] cursor-pointer" onClick={onLogin}>
+            Admin
+          </li>
           <li className="font-[600]">Blog</li>
           <li className="font-[600]">Contact</li>
         </ul>
@@ -76,7 +74,7 @@ export default function Navbar() {
       <div className="flex-1/4 w-[30%] md:flex-1/3 flex flex-col items-center md:justify-center">
         <div className="mb-[5px] hover:cursor-pointer" onClick={onCart}>
           <div className="bg-white rounded-[60%] h-[20px] w-[20px] ml-[15px] mt-[5px]">
-            <span className="mb-[250px]">2</span>
+            <span className="mb-[250px]">{quantity}</span>
           </div>
           <Image src="/img/cart.png" alt="" width={40} height={40} />
         </div>

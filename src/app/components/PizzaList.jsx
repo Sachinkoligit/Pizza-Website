@@ -1,52 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PizzaCard from "./PizzaCard";
+import axios from "axios";
 
 export default function PizzaList() {
-  const pizzaData = [
-    {
-      name: "Focaccia",
-      ingredients: "Bread with italian olive oil and rosemary",
-      price: 6,
-      photoName: "/pizzaImg/focaccia.jpg",
-      soldOut: false,
-    },
-    {
-      name: "Margherita",
-      ingredients: "Tomato and mozarella",
-      price: 10,
-      photoName: "/pizzaImg/margherita.jpg",
-      soldOut: false,
-    },
-    {
-      name: "Spinaci",
-      ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
-      price: 12,
-      photoName: "/pizzaImg/spinaci.jpg",
-      soldOut: false,
-    },
-    {
-      name: "Funghi",
-      ingredients: "Tomato, mozarella, mushrooms, and onion",
-      price: 12,
-      photoName: "/pizzaImg/funghi.jpg",
-      soldOut: false,
-    },
-    {
-      name: "Salamino",
-      ingredients: "Tomato, mozarella, and pepperoni",
-      price: 15,
-      photoName: "/pizzaImg/salamino.jpg",
-      soldOut: true,
-    },
-    {
-      name: "Prosciutto",
-      ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
-      price: 18,
-      photoName: "/pizzaImg/prosciutto.jpg",
-      soldOut: false,
-    },
-  ];
-
+  const [pizzaList, setPizzaList] = useState([]);
+  // const pizzaData = [
+  //   {
+  //     title: "Focaccia",
+  //     ingredients: "Bread with italian olive oil and rosemary",
+  //     prices: 6,
+  //     img: "/pizzaImg/focaccia.jpg",
+  //     soldOut: false,
+  //   },
+  //   {
+  //     title: "Margherita",
+  //     ingredients: "Tomato and mozarella",
+  //     prices: 10,
+  //     img: "/pizzaImg/margherita.jpg",
+  //     soldOut: false,
+  //   },
+  //   {
+  //     title: "Spinaci",
+  //     ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
+  //     prices: 12,
+  //     img: "/pizzaImg/spinaci.jpg",
+  //     soldOut: false,
+  //   },
+  //   {
+  //     title: "Funghi",
+  //     ingredients: "Tomato, mozarella, mushrooms, and onion",
+  //     prices: 12,
+  //     img: "/pizzaImg/funghi.jpg",
+  //     soldOut: false,
+  //   },
+  //   {
+  //     title: "Salamino",
+  //     ingredients: "Tomato, mozarella, and pepperoni",
+  //     prices: 15,
+  //     img: "/pizzaImg/salamino.jpg",
+  //     soldOut: true,
+  //   },
+  //   {
+  //     title: "Prosciutto",
+  //     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
+  //     prices: 18,
+  //     img: "/pizzaImg/prosciutto.jpg",
+  //     soldOut: false,
+  //   },
+  // ];
+  // pizzaList = axios.get("http://localhost:3000/api/products").data;
+  useEffect(() => {
+    const fetchPizza = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/products");
+        const data = res.data;
+        setPizzaList(data);
+      } catch (err) {
+        console.log("pizza error", err);
+      }
+    };
+    fetchPizza();
+  }, []);
   return (
     <div className="mb-10 flex flex-col gap-6 pt-10 justify-center items-center">
       <h1 className="px-[50px] text-center text-3xl font-semibold">
@@ -59,16 +73,19 @@ export default function PizzaList() {
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </div>
       <div className="flex flex-col md:flex md:flex-row items-center justify-center w-[100%] md:flex-wrap">
-        {pizzaData.map((data, i) => {
-          return (
-            <PizzaCard
-              img={data.photoName}
-              name={data.name}
-              price={data.price}
-              key={i}
-            />
-          );
-        })}
+        {pizzaList &&
+          pizzaList.map((data) => {
+            return (
+              <PizzaCard
+                pizza_id={data._id}
+                img={data.img}
+                title={data.title}
+                prices={data.prices[0]}
+                description={data.description}
+                key={data._id}
+              />
+            );
+          })}
       </div>
     </div>
   );
