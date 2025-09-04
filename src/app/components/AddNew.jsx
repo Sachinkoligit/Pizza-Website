@@ -28,7 +28,7 @@ export default function AddNew() {
         extraOptions: extra,
         img: uploadRes.data.url,
       };
-      await axios.post("http://localhost:3000/api/products", newProduct);
+      await axios.post("https://pizza-website-chi-hazel.vercel.app/api/products", newProduct);
       // console.log(uploadRes.data.url);
     } catch (err) {
       console.log(err);
