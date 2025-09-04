@@ -17,7 +17,7 @@ export default function index() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/products");
+        const res = await axios.get("https://pizza-website-chi-hazel.vercel.app/api/products");
         const data = res.data;
         setProduct(data);
       } catch (err) {
