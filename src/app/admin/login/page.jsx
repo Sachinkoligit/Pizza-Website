@@ -12,7 +12,7 @@ export default function page() {
   const router = useRouter();
   async function handleClick() {
     try {
-      const x = await axios.post("http://localhost:3000/api/login", {
+      const x = await axios.post("https://pizza-website-chi-hazel.vercel.app/api/login", {
         username,
         password,
       });
