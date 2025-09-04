@@ -146,7 +146,7 @@ export default function index() {
                   {/* {console.log(order)} */}
                   {order.map((item) => (
                     <tr key={item._id}>
-                      <td>{`${item._id.slice(0,4}.....${item._id.slice(-4)}`}</td>
+                      <td>{`${item._id.slice(0,4)}.....${item._id.slice(-4)}`}</td>
                       <td>{item.customer}</td>
                       <td>${item.total}</td>
                       <td>{status[item.status]}</td>
