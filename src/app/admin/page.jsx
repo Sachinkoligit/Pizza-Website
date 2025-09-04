@@ -108,7 +108,7 @@ export default function index() {
                     <td>
                       <img src={product.img} className="h-[50px] w-[50px]" />
                     </td>
-                    <td className="w-[40%]">{`${product._id.slice(0,4)}.....${product._id.slice(-4)}`}</td>
+                    <td className="">{`${product._id.slice(0,4)}.....${product._id.slice(-4)}`}</td>
                     <td>{product.title}</td>
                     <td>${product.prices[0]}</td>
                     <td>
