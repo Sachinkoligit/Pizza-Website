@@ -52,7 +52,7 @@ export default function PizzaList() {
   useEffect(() => {
     const fetchPizza = async () => {
       try {
-        const res = await axios.get("https://pizza-website-chi-hazel.vercel.app/api/products");
+        const res = await axios.get("https://pizza-website-steel.vercel.app/api/products");
         const data = res.data;
         setPizzaList(data);
       } catch (err) {
