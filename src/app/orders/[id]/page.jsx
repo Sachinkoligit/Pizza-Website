@@ -84,7 +84,7 @@ export default function page() {
                   <tbody>
                     <tr className="text-[17px]">
                       <td className="">
-                        <p>1{Order[0]._id}</p>
+                        <p>1{`${(Order[0]._id).slice(0,4)}....${(Order[0]._id).slice(-4)}`}</p>
                       </td>
                       <td>
                         <p className="">{Order[0].customer}</p>
