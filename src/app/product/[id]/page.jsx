@@ -26,7 +26,7 @@ export default function Product({ params }, any) {
   useEffect(() => {
     async function fetchPizza() {
       try {
-        const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+        const res = await axios.get(`https://pizza-website-chi-hazel.vercel.app/api/products/${id}`);
         setNewPizza(res.data);
         setPrice(res.data.prices[0]);
       } catch (err) {
