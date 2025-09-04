@@ -41,7 +41,7 @@ export default function page() {
   useEffect(() => {
     async function fetchOrder() {
       try {
-        const res = await axios.get(`http://localhost:3000/api/orders/${id}`);
+        const res = await axios.get(`https://pizza-website-chi-hazel.vercel.app/api/orders/${id}`);
         setOrder(res.data);
         setOrderStatus(res.data[0].status);
       } catch (err) {
