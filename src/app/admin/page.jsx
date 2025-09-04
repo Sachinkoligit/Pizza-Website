@@ -108,7 +108,7 @@ export default function index() {
                     <td>
                       <img src={product.img} className="h-[50px] w-[50px]" />
                     </td>
-                    <td className="w-[40%]">{product._id}</td>
+                    <td className="w-[40%]">{`${product._id.slice(0,4)}.....${product._id.slice(-4)}`}</td>
                     <td>{product.title}</td>
                     <td>${product.prices[0]}</td>
                     <td>
@@ -146,7 +146,7 @@ export default function index() {
                   {/* {console.log(order)} */}
                   {order.map((item) => (
                     <tr key={item._id}>
-                      <td>{item._id}</td>
+                      <td>{`${item._id.slice(0,4}.....${item._id.slice(-4)}`}</td>
                       <td>{item.customer}</td>
                       <td>${item.total}</td>
                       <td>{status[item.status]}</td>
