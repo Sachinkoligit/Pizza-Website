@@ -29,7 +29,7 @@ export default function index() {
 
   const fetchOrder = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/orders");
+      const res = await axios.get("https://pizza-website-chi-hazel.vercel.app/api/orders");
       const data = res.data;
       setOrder(data);
     } catch (err) {
@@ -56,7 +56,7 @@ export default function index() {
   async function handleClick(id) {
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        "https://pizza-website-chi-hazel.vercel.app/api/products/" + id
       );
       setProduct((product) => product.filter((x) => x._id !== id));
     } catch (err) {
@@ -66,7 +66,7 @@ export default function index() {
 
   async function handleNext(id, status) {
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
+      const res = await axios.put("https://pizza-website-chi-hazel.vercel.app/api/orders/" + id, {
         status: status + 1,
       });
       fetchOrder();
